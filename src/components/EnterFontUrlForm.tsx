@@ -27,6 +27,10 @@ function EnterFontUrlForm() {
   const [result, setResult] = useState<string | null>(null);
 
   const onSubmit = async (data: IForm) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    ym(98644370,'reachGoal','get-css-btn')
+    
     setResult(null);
     setFilename(null);
     setLoading(true);

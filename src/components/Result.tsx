@@ -27,7 +27,12 @@ function Result({
       <Flex justify="end" mt="2" gap="2">
         <Button
           colorScheme="blue"
-          onClick={() => DownloadFile(filename, css)}
+          onClick={() => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            ym(98644370, "reachGoal", "btn-download");
+            DownloadFile(filename, css);
+          }}
           rightIcon={<Icon as={DownloadIcon} h="5" w="5" />}
         >
           Download
@@ -40,7 +45,13 @@ function Result({
               w="5"
             />
           }
-          onClick={() => copyToClipboard(css)}
+          onClick={() => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            ym(98644370, "reachGoal", "copy-css-btn");
+
+            copyToClipboard(css);
+          }}
         >
           {copied ? "Copied!" : "Copy to Clipboard"}
         </Button>
