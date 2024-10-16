@@ -11,6 +11,7 @@ import { fetchCss } from "../utils/fetchCss";
 import { useState } from "react";
 import Result from "./Result";
 import ExtractNamesFromUrl from "../utils/extract-font-names-from-url";
+import { track } from "@vercel/analytics";
 
 type IForm = {
   url: string;
@@ -27,10 +28,6 @@ function EnterFontUrlForm() {
   const [result, setResult] = useState<string | null>(null);
 
   const onSubmit = async (data: IForm) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
-    ym(98644370,'reachGoal','get-css-btn')
-    
     setResult(null);
     setFilename(null);
     setLoading(true);
@@ -38,6 +35,12 @@ function EnterFontUrlForm() {
     setLoading(false);
     setFilename(ExtractNamesFromUrl(data.url));
     setResult(cssData);
+
+    
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    ym(98644370,'reachGoal','get-css-btn')
+    track('Get CSS');
   };
   return (
     <>

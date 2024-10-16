@@ -6,6 +6,7 @@ import {
   DownloadIcon,
 } from "lucide-react";
 import DownloadFile from "../utils/download-file";
+import { track } from "@vercel/analytics";
 
 function Result({
   css,
@@ -28,10 +29,12 @@ function Result({
         <Button
           colorScheme="blue"
           onClick={() => {
+            DownloadFile(filename, css);
+
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error
             ym(98644370, "reachGoal", "btn-download");
-            DownloadFile(filename, css);
+            track("Download CSS");
           }}
           rightIcon={<Icon as={DownloadIcon} h="5" w="5" />}
         >
@@ -46,11 +49,12 @@ function Result({
             />
           }
           onClick={() => {
+            copyToClipboard(css);
+
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-expect-error
             ym(98644370, "reachGoal", "copy-css-btn");
-
-            copyToClipboard(css);
+            track("Copy CSS");
           }}
         >
           {copied ? "Copied!" : "Copy to Clipboard"}
