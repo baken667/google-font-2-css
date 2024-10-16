@@ -2,6 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { Analytics } from "@vercel/analytics/react";
 
 const theme = extendTheme({
   fonts: {
@@ -17,5 +18,6 @@ createRoot(document.getElementById("root")!).render(
     <ChakraProvider resetCSS theme={theme}>
       <App />
     </ChakraProvider>
+    <Analytics />
   </StrictMode>
 );
